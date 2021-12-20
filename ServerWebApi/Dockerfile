@@ -6,16 +6,16 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["ClientWebApi/ClientWebApi.csproj", "ClientWebApi/"]
-RUN dotnet restore "ClientWebApi/ClientWebApi.csproj"
+COPY ["ServerWebApi/ServerWebApi.csproj", "ServerWebApi/"]
+RUN dotnet restore "ServerWebApi/ServerWebApi.csproj"
 COPY . .
-WORKDIR "/src/ClientWebApi"
-RUN dotnet build "ClientWebApi.csproj" -c Release -o /app/build
+WORKDIR "/src/ServerWebApi"
+RUN dotnet build "ServerWebApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "ClientWebApi.csproj" -c Release -o /app/publish
+RUN dotnet publish "ServerWebApi.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "ClientWebApi.dll"]
+ENTRYPOINT ["dotnet", "ServerWebApi.dll"]

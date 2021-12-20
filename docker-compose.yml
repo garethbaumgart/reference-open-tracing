@@ -6,3 +6,9 @@ services:
     build:
       context: .
       dockerfile: ClientWebApi/Dockerfile
+  serverwebapi:
+    image: ${DOCKER_REGISTRY-}serverwebapi
+    build:
+      context: .
+      dockerfile: ServerWebApi/Dockerfile
+
