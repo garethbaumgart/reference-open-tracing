@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  clientwebapi:
+    image: ${DOCKER_REGISTRY-}clientwebapi
+    build:
+      context: .
+      dockerfile: ClientWebApi/Dockerfile
