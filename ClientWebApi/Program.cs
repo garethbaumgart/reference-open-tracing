@@ -13,8 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<HttpClient>();
 
-var serviceName = Assembly.GetExecutingAssembly().GetName().ToString();
-//Register a static instance as per docs
+var serviceName = Assembly.GetExecutingAssembly().GetName().FullName;
+//Register a static instance as per OTEL docs
 builder.Services.AddSingleton<ActivitySource>(new ActivitySource(serviceName));
 
 builder.Services.AddOpenTelemetryTracing(traceBuilder =>
