@@ -1,3 +1,8 @@
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using System.Diagnostics;
+using System.Reflection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +12,21 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<HttpClient>();
+
+var serviceName = Assembly.GetExecutingAssembly().GetName().ToString();
+//Register a static instance as per docs
+builder.Services.AddSingleton<ActivitySource>(new ActivitySource(serviceName));
+
+builder.Services.AddOpenTelemetryTracing(traceBuilder =>
+{
+    traceBuilder
+    .AddConsoleExporter()
+    .AddSource(serviceName)
+    .SetResourceBuilder(
+        ResourceBuilder.CreateDefault()
+            .AddService(serviceName: serviceName))
+    .AddAspNetCoreInstrumentation();
+});
 
 var app = builder.Build();
 
