@@ -14,6 +14,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.Configure<PostgresConfiguration>(configuration.GetSection("ConnectionStrings"));
+builder.Services.AddTransient<IValueRepository, ValueRepository>();
 
 var serviceName = Assembly.GetExecutingAssembly().GetName().FullName;
 builder.Services.AddSingleton<ActivitySource>(new ActivitySource(serviceName));
@@ -27,8 +29,6 @@ builder.Services.AddOpenTelemetryTracing(traceBuilder =>
         .AddService(serviceName))
     .AddAspNetCoreInstrumentation();
 });
-builder.Services.Configure<PostgresConfiguration>(configuration.GetSection("ConnectionStrings"));
-builder.Services.AddTransient<IValueRepository, ValueRepository>();
 
 var app = builder.Build();
 
