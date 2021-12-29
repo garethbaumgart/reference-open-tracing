@@ -1,9 +1,12 @@
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using ServerWebApi;
+using ServerWebApi.Repositories;
 using System.Diagnostics;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 // Add services to the container.
 
@@ -24,6 +27,8 @@ builder.Services.AddOpenTelemetryTracing(traceBuilder =>
         .AddService(serviceName))
     .AddAspNetCoreInstrumentation();
 });
+builder.Services.Configure<PostgresConfiguration>(configuration.GetSection("ConnectionStrings"));
+builder.Services.AddTransient<IValueRepository, ValueRepository>();
 
 var app = builder.Build();
 

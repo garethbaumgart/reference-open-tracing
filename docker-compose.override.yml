@@ -13,12 +13,13 @@ services:
   serverwebapi:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=referencedatabase;Database=reference;User Id=postgres;Password=LetMeIn!
     ports:
       - "8001:80"
 
   datamigration:
     environment:
-      ConnectionStrings__DefaultConnection: "Server=referencedatabase;Database=reference;User Id=postgres;Password=LetMeIn!"
+      - ConnectionStrings__DefaultConnection=Server=referencedatabase;Database=reference;User Id=postgres;Password=LetMeIn!
 
   referencedatabase:
     environment:

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ServerWebApi.Repositories;
 using System.Diagnostics;
 
 namespace ServerWebApi.Controllers
@@ -8,19 +9,22 @@ namespace ServerWebApi.Controllers
     public class ServerController
     {
         private ActivitySource _activitySource;
-        public ServerController(ActivitySource activitySource)
+        private IValueRepository _valueRepository;
+
+        public ServerController(ActivitySource activitySource, IValueRepository valueRepository)
         {
             _activitySource = activitySource;
+            _valueRepository = valueRepository;
         }
 
         [HttpGet(Name = "GetValuesFromDatabase")]
-        public Task<IEnumerable<string>> Get()
+        public async Task<IEnumerable<string>> Get()
         {
             using var activity = _activitySource.StartActivity("GetValuesFromDatabase");
-            var tempValues = new List<string>() { "Value One", "Value Two" };
-            activity?.SetTag("TempValues", tempValues);
+            var values = await _valueRepository.GetValues();
+            activity?.SetTag("ReturnedValues", values);
 
-            return Task.FromResult(tempValues.AsEnumerable<string>());
+            return values;
         }
     }
 }
