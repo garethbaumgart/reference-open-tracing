@@ -9,9 +9,20 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
   serverwebapi:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "8001:80"
 
+  datamigration:
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=referencedatabase;Database=reference;User Id=postgres;Password=LetMeIn!"
+
+  referencedatabase:
+    environment:
+      POSTGRES_PASSWORD: LetMeIn!
+      POSTGRES_DB: reference
+    ports:
+    - "5432"

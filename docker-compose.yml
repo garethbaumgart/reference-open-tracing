@@ -6,9 +6,27 @@ services:
     build:
       context: .
       dockerfile: ClientWebApi/Dockerfile
+  
   serverwebapi:
     image: ${DOCKER_REGISTRY-}serverwebapi
     build:
       context: .
       dockerfile: ServerWebApi/Dockerfile
 
+  datamigration:
+    image: ${DOCKER_REGISTRY-}datamigration
+    build:
+      context: ./DataMigration
+      dockerfile: Dockerfile
+
+  referencedatabase:
+    image: postgres:14
+    container_name: postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+     - PGADMIN_DEFAULT_EMAIL=test@me.com
+     - PGADMIN_DEFAULT_PASSWORD=letmein
+    ports:
+     - "5050:80"

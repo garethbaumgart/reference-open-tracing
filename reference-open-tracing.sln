@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientWebApi", "ClientWebAp
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{82A05823-F526-4E5C-8D92-026F25BBD0D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerWebApi", "ServerWebApi\ServerWebApi.csproj", "{65D010FB-D2A6-4ADF-B516-F40CEE26C758}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerWebApi", "ServerWebApi\ServerWebApi.csproj", "{65D010FB-D2A6-4ADF-B516-F40CEE26C758}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataMigration", "DataMigration\DataMigration.csproj", "{88016A94-182B-4004-A6AC-A7A0E388F55F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{65D010FB-D2A6-4ADF-B516-F40CEE26C758}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65D010FB-D2A6-4ADF-B516-F40CEE26C758}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65D010FB-D2A6-4ADF-B516-F40CEE26C758}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88016A94-182B-4004-A6AC-A7A0E388F55F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88016A94-182B-4004-A6AC-A7A0E388F55F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88016A94-182B-4004-A6AC-A7A0E388F55F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88016A94-182B-4004-A6AC-A7A0E388F55F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
