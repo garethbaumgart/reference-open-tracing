@@ -27,7 +27,9 @@ builder.Services.AddOpenTelemetryTracing(traceBuilder =>
     .SetResourceBuilder(
         ResourceBuilder.CreateDefault()
         .AddService(serviceName))
-    .AddAspNetCoreInstrumentation();
+    .AddAspNetCoreInstrumentation()
+    .AddJaegerExporter();
+
 });
 
 var app = builder.Build();

@@ -20,13 +20,14 @@ builder.Services.AddSingleton<ActivitySource>(new ActivitySource(serviceName));
 builder.Services.AddOpenTelemetryTracing(traceBuilder =>
 {
     traceBuilder
-    .AddConsoleExporter()
-    .AddSource(serviceName)
-    .SetResourceBuilder(
-        ResourceBuilder.CreateDefault()
-            .AddService(serviceName: serviceName))
-    .AddAspNetCoreInstrumentation()
-    .AddHttpClientInstrumentation();
+        .AddConsoleExporter()
+        .AddSource(serviceName)
+        .SetResourceBuilder(
+            ResourceBuilder.CreateDefault()
+                .AddService(serviceName: serviceName))
+        .AddAspNetCoreInstrumentation()
+        .AddHttpClientInstrumentation()
+        .AddJaegerExporter();
 });
 
 var app = builder.Build();

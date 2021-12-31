@@ -4,6 +4,8 @@ services:
   clientwebapi:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - OTEL_EXPORTER_JAEGER_AGENT_HOST=Jaeger
+      - OTEL_EXPORTER_JAEGER_AGENT_PORT=6831
     ports:
       - "8000:80"
     volumes:
@@ -14,6 +16,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Server=referencedatabase;Database=reference;User Id=postgres;Password=LetMeIn!
+      - OTEL_EXPORTER_JAEGER_AGENT_HOST=Jaeger
+      - OTEL_EXPORTER_JAEGER_AGENT_PORT=6831
     ports:
       - "8001:80"
 
