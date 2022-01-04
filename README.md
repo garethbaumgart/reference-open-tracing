@@ -29,7 +29,7 @@ From here you should have trace logs in your Jaeger instance. Open up a browser 
 
 # Important to note
 This reference project does not make use of OTEL's .NET exporter and OTEL's Collector. I am using a direct export in my application to Jeager via the JeagerExporter. The intent is to expand to remove the direct Jaeger exporter and make use of the OTEL .NET exporter and OTEL collector to send trace logs to a backend like Jaeger or Datadog
-![Jaeger UI](./assets/images/jaeger-ui.png)
+![Jaeger UI](./assets/images/jaeger-ui.PNG)
 
 Using the Trace data you should be able to track the flow of data.
 Client API -> Server API -> Database
