@@ -27,7 +27,7 @@ builder.Services.AddOpenTelemetryTracing(traceBuilder =>
                 .AddService(serviceName: serviceName))
         .AddAspNetCoreInstrumentation()
         .AddHttpClientInstrumentation()
-        .AddJaegerExporter();
+        .AddOtlpExporter(config => config.Endpoint = new Uri("http://otelcollector:4317"));//todo move to config
 });
 
 var app = builder.Build();

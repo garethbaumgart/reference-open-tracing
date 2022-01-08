@@ -22,13 +22,13 @@ builder.Services.AddSingleton<ActivitySource>(new ActivitySource(serviceName));
 builder.Services.AddOpenTelemetryTracing(traceBuilder =>
 {
     traceBuilder
-    .AddConsoleExporter()
-    .AddSource(serviceName)
-    .SetResourceBuilder(
-        ResourceBuilder.CreateDefault()
-        .AddService(serviceName))
-    .AddAspNetCoreInstrumentation()
-    .AddJaegerExporter();
+        .AddConsoleExporter()
+        .AddSource(serviceName)
+        .SetResourceBuilder(
+            ResourceBuilder.CreateDefault()
+                .AddService(serviceName))
+        .AddAspNetCoreInstrumentation()
+        .AddOtlpExporter(config => config.Endpoint = new Uri("http://otelcollector:4317"));//todo move to config
 
 });
 
