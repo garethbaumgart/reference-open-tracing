@@ -6,6 +6,7 @@ A reference project to establish distributed tracing between Web API's and a dat
 * HttpClientInstrumentation - providing instrumentation over Http calls.
 * Manual instrumentation - manually instrumenting tracing to Database calls that are using Dapper.
 * OtelExporter - sending all metric data to the OTEL collector
+* OtelCollector - recieving all metric data. Has the ability to process and export to muliple backends (think DataDog, Splunk, Jaeger Zipkin etc)
 * Jaeger - providing a all in one Jaeger docker container to recieve and view all trace logs.
 
 ## Usage - Run this project
