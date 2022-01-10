@@ -22,6 +22,7 @@ Running the docker-compose file starts up a few containers
 * A postgreSQL database instance
 * A migration project that creates a table and populates it with some test data
 * A Pgadmin instance incase you wish to manage the database through UI
+* A OTEL Collector agent to receive & export all telemetry data
 * Lastly a Jaeger all in one instance to collect and view the application traces.
 
 Once the containers are up a default browser will open. This is the Client Web API. Using Swagger execute the GetValuesFromServer endpoint.
