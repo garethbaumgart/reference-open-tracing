@@ -5,7 +5,7 @@ A reference project to establish distributed tracing between Web API's and a dat
 * AspNetCoreInstrumentation - providing automatic instrumentation.
 * HttpClientInstrumentation - providing instrumentation over Http calls.
 * Manual instrumentation - manually instrumenting tracing to Database calls that are using Dapper.
-* JaegerExporter - sending tracing data to Jaeger.
+* OtelExporter - sending all metric data to the OTEL collector
 * Jaeger - providing a all in one Jaeger docker container to recieve and view all trace logs.
 
 ## Usage - Run this project
