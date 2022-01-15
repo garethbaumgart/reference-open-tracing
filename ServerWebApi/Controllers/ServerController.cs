@@ -17,8 +17,9 @@ namespace ServerWebApi.Controllers
             _valueRepository = valueRepository;
         }
 
-        [HttpGet(Name = "GetValuesFromDatabase")]
-        public async Task<IEnumerable<string>> Get()
+        [HttpGet]
+        [Route("values")]
+        public async Task<IEnumerable<string>> GetValues()
         {
             using var activity = _activitySource.StartActivity("GetValuesFromDatabase");
             var values = await _valueRepository.GetValues();
