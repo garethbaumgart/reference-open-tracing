@@ -35,7 +35,8 @@ The Client API exposes a GetError endpoint that mimics the same behavior as GetV
 ![ActivityEvent as Error](https://user-images.githubusercontent.com/12730626/149602953-28acb23f-cf47-4779-a643-b59a44b4e479.png)
 
 # Important to note
-This reference project does not make use of OTEL's .NET exporter and OTEL's Collector. I am using a direct export in my application to Jeager via the JeagerExporter. The intent is to expand to remove the direct Jaeger exporter and make use of the OTEL .NET exporter and OTEL collector to send trace logs to a backend like Jaeger or Datadog
+~~This reference project does not make use of OTEL's .NET exporter and OTEL's Collector. I am using a direct export in my application to Jeager via the JeagerExporter. The intent is to expand to remove the direct Jaeger exporter and make use of the OTEL .NET exporter and OTEL collector to send trace logs to a backend like Jaeger or Datadog~~
+The Collector has now been implemented.
 
 Using the Trace data you should be able to track the flow of data.
 Client API -> Server API -> Database
